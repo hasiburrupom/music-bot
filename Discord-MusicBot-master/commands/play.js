@@ -15,7 +15,7 @@ module.exports = {
 
     run: async function (client, message, args) {
         let channel = message.member.voice.channel;
-        if (!channel) return sendError("I'm sorry but you need to be in a voice channel to play music!", message.channel);
+        if (!channel) return sendError("Ami Tomar Vc te thaklei To Gan Sunite parbo Ami Vc te Nai Tu", message.channel);
 
         const permissions = channel.permissionsFor(message.client.user);
         if (!permissions.has("CONNECT")) return sendError("I cannot connect to your voice channel, make sure I have the proper permissions!", message.channel);
@@ -31,7 +31,7 @@ module.exports = {
         if (url.match(/^(https?:\/\/)?(www\.)?(m\.)?(youtube\.com|youtu\.?be)\/.+$/gi)) {
             try {
                 songInfo = await ytdl.getInfo(url);
-                if (!songInfo) return sendError("Looks like i was unable to find the song on YouTube", message.channel);
+                if (!songInfo) return sendError("Valo Kore Dekho Aurora Sob kicho Thik ase Ki nah Paitesinah tu", message.channel);
                 song = {
                     id: songInfo.videoDetails.videoId,
                     title: songInfo.videoDetails.title,
@@ -67,7 +67,7 @@ module.exports = {
         } else {
             try {
                 var searched = await yts.search(searchString);
-                if (searched.videos.length === 0) return sendError("Looks like i was unable to find the song on YouTube", message.channel);
+                if (searched.videos.length === 0) return sendError("Aurora ei Gan Ta paitesi Nah Khuje Valo Kore dekho to Gan er na ta", message.channel);
 
                 songInfo = searched.videos[0];
                 song = {
@@ -135,7 +135,7 @@ module.exports = {
                             if (queue) {
                                 queue.songs.shift();
                                 play(queue.songs[0]);
-                                return sendError(`An unexpected error has occurred.\nPossible type \`${er}\``, message.channel);
+                                return sendError(`Ami Bojtesi Nah ai Gan ta Kno paitesi nah Aurora.\nPossible type \`${er}\``, message.channel);
                             }
                         }
                     });
@@ -173,10 +173,10 @@ module.exports = {
             queueConstruct.connection = connection;
             play(queueConstruct.songs[0]);
         } catch (error) {
-            console.error(`I could not join the voice channel: ${error}`);
+            console.error(`Aurora amar Ei ve te permission Nai : ${error}`);
             message.client.queue.delete(message.guild.id);
             await channel.leave();
-            return sendError(`I could not join the voice channel: ${error}`, message.channel);
+            return sendError(`Ami ei tay jaite Parbo nah aurora: ${error}`, message.channel);
         }
     },
 };
