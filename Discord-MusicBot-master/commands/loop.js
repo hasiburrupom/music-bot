@@ -4,7 +4,7 @@ const sendError = require("../util/error");
 module.exports = {
   info: {
     name: "loop",
-    description: "Toggle music loop",
+    description: "Aurora Tomar Jonno Saradin cholbe Gan",
     usage: "loop",
     aliases: ["l"],
   },
@@ -20,6 +20,6 @@ module.exports = {
                 }
             });
         };
-    return sendError("There is nothing playing in this server.", message.channel);
+    return sendError("Aurora Age Gan Tu charo", message.channel);
   },
 };
